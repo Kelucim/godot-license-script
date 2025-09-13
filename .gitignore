@@ -14,3 +14,9 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# git add-on
+addons/godot-git-plugin
+
+# other
+.DS_Store
