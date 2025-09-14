@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdgny88db71as"]
 
-[ext_resource type="Script" uid="uid://d2y2jn1opp31u" path="res://license_script.gd" id="1_v14b7"]
+[ext_resource type="Script" uid="uid://d2y2jn1opp31u" path="res://license_script.gd" id="1_a7ybj"]
 
 [node name="LicenseScene" type="Control" node_paths=PackedStringArray("license_text_label")]
 layout_mode = 3
@@ -11,10 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_v14b7")
+script = ExtResource("1_a7ybj")
 license_text_label = NodePath("MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/LicenseText")
 do_i_use_non_godot_licenses = true
-non_godot_thirdparty_license_file = "res://LicensesSceneExample/NON_GODOT_THIRDPARTY_COPYRIGHTS.txt"
+non_godot_thirdparty_license_file = "res://examples/LicensesScene/NON_GODOT_THIRDPARTY_COPYRIGHTS.txt"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

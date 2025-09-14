@@ -12,9 +12,13 @@ func _ready() -> void:
 	
 	load_non_godot_license_text()
 	
-	godot_license_text()
+	add_to_text(str("\n=========================\n", 
+			"GODOT_COPYRIGHT", 
+			"\n=========================\n\n"))
 	
 	copyright_info()
+	
+	godot_license_text()
 	
 	license_info()
 
@@ -22,17 +26,26 @@ func _ready() -> void:
 func add_to_text(text_to_add: String):
 	license_text_label.text = str(license_text_label.text, text_to_add)
 
+
 func load_non_godot_license_text():
-	if non_godot_thirdparty_license_file == null and do_i_use_non_godot_licenses:
-		add_to_text("Non Godot License file doesn't exist!\n\n")
-	elif non_godot_thirdparty_license_file and do_i_use_non_godot_licenses:
+	if non_godot_thirdparty_license_file == null:
+		add_to_text("Non Godot License file wasn't selected!\n\n")
+		print_debug("Non Godot License file wasn't selected!")
+		return
+	
+	var does_file_exist = FileAccess.file_exists(non_godot_thirdparty_license_file)
+	
+	if does_file_exist == false and do_i_use_non_godot_licenses:
+		add_to_text("Non Godot License file doesn't exist at specified location!\n\n")
+		print_debug("Non Godot License file doesn't exist at specified location!")
+		
+	elif does_file_exist == true and do_i_use_non_godot_licenses:
 		var file = FileAccess.open(non_godot_thirdparty_license_file, FileAccess.READ)
 		
 		add_to_text(file.get_as_text())
 
+
 func godot_license_text():
-	add_to_text(str("\n=========================\n", "GODOT_COPYRIGHT","\n=========================\n\n"))
-	
 	add_to_text(str(Engine.get_license_text(), "\n"))
 	
 	
